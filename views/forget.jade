@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+
+  body
+    hr
+    .container
+      .row
+        .row
+          .col-md-4.col-md-offset-4
+            .panel.panel-default
+              .panel-body
+                .text-center
+                  h3
+                    i.fa.fa-lock.fa-4x
+                  h2.text-center Forgot Password?
+                  p You can reset your password here.
+                  .panel-body
+                    form.form(action='/forget', method='POST')
+                      fieldset
+                        .form-group
+                          .input-group
+                            span.input-group-addon
+                              i.glyphicon.glyphicon-envelope.color-blue
+                            input#emailInput.form-control(placeholder='email', type='email', oninvalid="setCustomValidity('Please enter a valid email address!')", onchange="try{setCustomValidity('')}catch(e){}", required='', name ='email')
+                        .form-group
+                          input.btn.btn-lg.btn-primary.btn-block(value='Send My Password', type='submit')

@@ -1,0 +1,137 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title 監測垃圾量
+    // Bootstrap core CSS
+    link(href='./stylesheets/bootstrap.css', rel='stylesheet')
+    link(href='./stylesheets/custom-styles.css', rel='stylesheet')
+    link(href='./stylesheets/image-effects.css', rel='stylesheet')
+    link(href='./stylesheets/normalize.css', rel='stylesheet')
+    link(href='./stylesheets/component.css', rel='stylesheet')
+    link(rel='stylesheet', href='./stylesheets/font-awesome.css')
+    link(rel='stylesheet', href='./stylesheets/font-awesome-ie7.css')
+
+    script(src='./javascripts/html5shiv.js')
+    script(src='./javascripts/respond.min.js')
+    script(src='./javascripts/modernizr.custom.js')
+
+    script.
+            var x = document.getElementById("demo");
+            function getLocation() {
+            if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+            }
+            function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+            }
+    style.
+      #map {
+      height: 100%;
+      weight: 80%;
+      }
+      html, body {
+      height: 80%;
+      weight: 100%;
+      margin: 0;
+      padding: 0;
+      }
+
+      style.
+          table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          }
+          td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+          }
+          tr:nth-child(even) {
+          background-color: #dddddd;
+          }
+    body
+      .container.page-styling
+        .header-wrapper
+          .site-name
+            h1 監測垃圾量
+          .menu
+            .navbar
+              .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+              .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                  if member
+                    li
+                      a(href='/monitor') Monitor Trash
+                    li
+                      a(href='/history') History
+                    li
+                        a(href='/pos') Pos
+                    li
+                      a(href='/logout') Logout
+
+                    //if not boss
+                    //  li
+                    //    a(href='/logout') Logouts
+
+      br
+      br
+
+      if output
+        h1
+         center= output
+      br
+      br
+      if update_result
+       center
+        .container
+         .row
+           table
+               tr
+                  th 垃圾桶編號
+                  th 員工
+                  th 經度
+                  th 緯度
+                  th 時間
+               for items in update_result
+                   tr
+                     th(bgcolor='#b3e6ff')= items.Trashid
+                     th(bgcolor='#b3e6ff')= items.Eid
+                     th(bgcolor='#b3e6ff')= items.Lng_user
+                     th(bgcolor='#b3e6ff')= items.Lat_user
+                     th(bgcolor='#b3e6ff')= items.Time
+      br
+      br
+      container
+       .container
+         .logmod__form
+          form.simform(name='sentMessage', action='/Pos', method='POST', novalidate='')
+            .sminputs
+              .input.full
+              | Input &nbsp; Your &nbsp; TrashCanID &nbsp;:&nbsp;
+              input#account.form-control(type='text', placeholder='ID', name='ids', required='')
+            .simform__actions
+            button.btn.input.sumbit(type='submit') Submit
+
+      //.container
+      //  .logmod__form
+      //    form.simform(name='sentMessage', action='/Pos', method='POST', novalidate='')
+      //      .sminputs
+      //        .input.full
+                | TrashCanID &nbsp;:&nbsp;
+      //          inputinput#tokens.form-control( type='email', placeholder='ID', name='ids',  data-validation-required-message='ID')
+      //        br
+      //      .simform__actions
+      //        button.btn.input.sumbit(type='submit') Submit

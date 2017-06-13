@@ -1,0 +1,103 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title 垃圾監測首頁
+    // Bootstrap core CSS
+    link(href='./stylesheets/bootstrap.css', rel='stylesheet')
+    link(href='./stylesheets/custom-styles.css', rel='stylesheet')
+    link(href='./stylesheets/image-effects.css', rel='stylesheet')
+    link(href='./stylesheets/normalize.css', rel='stylesheet')
+    link(href='./stylesheets/component.css', rel='stylesheet')
+    link(rel='stylesheet', href='./stylesheets/font-awesome.css')
+    link(rel='stylesheet', href='./stylesheets/font-awesome-ie7.css')
+    script(src='./javascripts/html5shiv.js')
+    script(src='./javascripts/respond.min.js')
+    script(src='./javascripts/modernizr.custom.js')
+  body
+    .container.page-styling
+      .header-wrapper
+        .site-name
+          h1 監測垃圾
+        .menu
+          .navbar
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            .navbar-collapse.collapse
+              ul.nav.navbar-nav
+                if member
+                  li
+                    a(href='/monitor') Monitor Trash
+                  li
+                    a(href='/history') History
+                  li
+                    a(href='/pos') Pos
+                  li
+                    a(href='/logout') Logout
+
+                    //if boss
+                    //  li
+                    //    a(href='/logout') Logouts
+                else
+                  li
+                    a(href='/register') Login
+
+
+            // /.navbar-collapse
+          .mini-menu
+            label
+              select.selectnav
+                option(value='#', selected='') Home
+                option(value='#') About
+                option(value='#') → Another action
+                option(value='#') → Something else here
+                option(value='#') → Another action
+                option(value='#') → Something else here
+                option(value='#') Services
+                option(value='#') Portfolio
+                option(value='#') Contact
+      .banner
+        #carousel-example-generic.carousel.slide(data-ride='carousel')
+          // Wrapper for slides
+          .carousel-inner
+            .item.active
+              img(src='./images/banner-1.png', alt='')
+
+          // Controls
+          a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
+            span.glyphicon.glyphicon-chevron-left
+          a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
+            span.glyphicon.glyphicon-chevron-right
+
+    // /container
+    .container
+      .copy-rights
+        | Copyright(c) website name.
+        br
+        | Designed by:
+        a(href='http://www.alltemplateneeds.com')  www.alltemplateneeds.com
+        |   /  Images from:
+        a(href='http://www.wallpaperswide.com')  www.wallpaperswide.com
+    //
+      Bootstrap core JavaScript
+      ==================================================
+    // Placed at the end of the document so the pages load faster
+    script(src='./javascripts/jquery-1.9.1.js')
+    script(src='./javascripts/bootstrap.js')
+    script(src='./javascripts/modernizr-2.6.2-respond-1.1.0.min.js')
+    script(src='./javascripts/masonry.pkgd.min.js')
+    script(src='./javascripts/imagesloaded.js')
+    script(src='./javascripts/classie.js')
+    script(src='./javascripts/AnimOnScroll.js')
+    script.
+      new AnimOnScroll( document.getElementById( 'grid' ), {
+      minDuration : 0.4,
+      maxDuration : 0.7,
+      viewportFactor : 0.2
+      } );
